@@ -13,7 +13,7 @@ const Header = () => {
                 <img src="/images/logo.png" alt="Logo" style ={{width:50}}/>
             </div>
             <div className="company-name">
-                Laflamme Company
+                One-Stop Car Shop
             </div>
         </div>
 

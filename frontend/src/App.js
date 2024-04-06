@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Homepage from './components/Homepage';
-import Productpage from './components/Productpage';
-import LoginPage from './components/LoginPage';
+import HomePage from './component/HomePage';
+import ProductPage from './component/ProductPage';
+import LoginPage from './component/LoginPage';
 
 const App = () => {
   const [authentication, setAuthentication] = useState(true);
@@ -12,14 +12,14 @@ const App = () => {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<HomePage/>} />
           {/* Use a ternary operator to conditionally render components */}
           <Route
             path="/products"
-            element={authentication ? <Productpage /> : <LoginPage/>}
+            element={authentication? <ProductPage/> : <LoginPage/>}
           />
           {/* Render the LoginPage component for the /login route */}
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage/>}/>
         </Routes>
       </div>
     </Router>
