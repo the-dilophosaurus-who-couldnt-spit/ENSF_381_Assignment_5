@@ -84,7 +84,7 @@ products = [
         "image": 'images/product10.jpg' 
     } 
 ] 
-############################# Helper functions #############################
+# Helper functions
 def does_username_exist(userlist, username):
     for user in userlist:
         if user['username'] == username:
@@ -92,7 +92,7 @@ def does_username_exist(userlist, username):
     return 0 #doesn't exist
 
 
-############################# Routing #############################
+#Routing
 @app.route('/authenticate', methods=['POST'])
 def authenticate_user():
     data = request.get_json()
@@ -111,7 +111,7 @@ def add_user():
     if not does_username_exist(users, new_user['username']):
         
         users.append(new_user)
-        return {'message': "User created Succefully" }, 201
+        return {'message': "User created Successfully" }, 201
     else:
         return {'message': "Username already in use" }, 406 #not acceptable
 
@@ -127,7 +127,7 @@ def get_product_by_id(product_id):
     else:
         return jsonify({'message': 'Product not found'}), 404
  
-##this is for testing purposes 
+#this is for testing purposes 
 @app.route('/users', methods=['GET'])
 def get_users():
     return jsonify(users)
