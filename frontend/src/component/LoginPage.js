@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Header from './Header';
 import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
+import SignupForm from './SignupForm.js';
 import Footer from './Footer';
 
 const LoginPage = () => {

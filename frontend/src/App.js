@@ -13,12 +13,12 @@ const App = () => {
       <div>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          {/* Use a ternary operator to conditionally render components /}
+          {/* Use a ternary operator to conditionally render components */}
           <Route
             path="/products"
             element={authentication ? <Productpage /> : <LoginPage/>}
           />
-          {/ Render the LoginPage component for the /login route */}
+          {/* Render the LoginPage component for the /login route */}
           <Route path="/login" element={<LoginPage />} />
         </Routes>
       </div>
