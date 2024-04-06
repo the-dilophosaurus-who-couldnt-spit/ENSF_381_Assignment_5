@@ -31,7 +31,7 @@ const SignupForm = ({ onSwitchToLogin, onSignup }) => {
       setMessage(response.message);
     })
     .catch(error => {
-      console.error(`Consol ERROR: ${error}`); // Log any errors that occur
+      console.error(`Consol ERROR: ${error}`);
       setMessage(error);
     });
     
