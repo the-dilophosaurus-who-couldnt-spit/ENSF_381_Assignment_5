@@ -31,16 +31,17 @@ const SignupForm = ({ onSwitchToLogin, onSignup }) => {
       setMessage(response.message);
     })
     .catch(error => {
-      console.error(`Consol ERROR: ${error}`);
+      console.error(`Consol ERROR: ${error}`); // Log any errors that occur
       setMessage(error);
     });
     
   };
 
+
   return (
     <form onSubmit={handleSignup}>
       <div style={{ marginBottom: '10px' }}>
-        <span style={{ color: 'red', display: 'block', fontSize: '14px' }}>{message}</span>
+        {message && <span style={{ color: 'red', display: 'block', fontSize: '14px' }}>{message}</span>}
       </div>
       <div>
         <label htmlFor="username">Username:</label>
@@ -50,6 +51,7 @@ const SignupForm = ({ onSwitchToLogin, onSignup }) => {
           placeholder="Enter your username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required  
         />
       </div>
       <div>
@@ -60,6 +62,7 @@ const SignupForm = ({ onSwitchToLogin, onSignup }) => {
           placeholder="Enter your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -70,6 +73,7 @@ const SignupForm = ({ onSwitchToLogin, onSignup }) => {
           placeholder="Confirm your password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -80,6 +84,7 @@ const SignupForm = ({ onSwitchToLogin, onSignup }) => {
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -90,6 +95,7 @@ const SignupForm = ({ onSwitchToLogin, onSignup }) => {
       </div>
     </form>
   );
+  
 };
 
 export default SignupForm;

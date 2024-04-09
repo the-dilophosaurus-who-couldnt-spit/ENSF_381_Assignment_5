@@ -1,20 +1,29 @@
 // ProductPage.js
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useAuth } from './AuthContext'; // Import the useAuth hook
 import Header from './Header';
 import ProductList from './ProductList';
 import Cart from './Cart';
 import Footer from './Footer';
 
 const ProductPage = () => {
+  const { authenticated } = useAuth(); // Get the authenticated state from the context
   const [cartItems, setCartItems] = useState([]);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
-    const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
-    if (storedCartItems) {
-      setCartItems(storedCartItems);
+    if (!authenticated) {
+      // Redirect to login page if not authenticated
+      navigate('/login');
+    } else {
+      const storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+      if (storedCartItems) {
+        setCartItems(storedCartItems);
+      }
     }
-  }, []);
+  }, [authenticated, navigate]);
 
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -31,7 +40,7 @@ const ProductPage = () => {
     }
   };
 
-const removeFromCart = (item) => {
+  const removeFromCart = (item) => {
     const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.id);
   
     if (existingItemIndex !== -1) {

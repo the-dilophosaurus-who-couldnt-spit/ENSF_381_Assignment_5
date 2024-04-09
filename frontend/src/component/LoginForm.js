@@ -1,51 +1,46 @@
-//LoginForm.js
-
+// LoginForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
-const LoginForm = ({ onSwitchToSignup}) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [Authenticated, setAuthenticated] = useState(false);
-  const [message, setMessage] = useState("");
+const LoginForm = ({ onSwitchToSignup }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const { login } = useAuth(); // Access the login function from AuthContext
   const navigate = useNavigate();
-  console.log("");
-  console.log(`username: ${username}`);
-  console.log(`pass: ${password}`);
-  console.log(`authenticated: ${Authenticated}`);
-  console.log(`messege: ${message}`);
 
-  function handleLogin(e) {
+  const handleLogin = async (e) => {
     e.preventDefault();
-  
-    fetch('http://127.0.0.1:5000/authenticate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ 'username': username, 'password': password }),
-    })
-      .then(response => response.json())
-      .then(data => {
-        setAuthenticated(data.authenticated);
-        setMessage(data.message);
-        if (data.authenticated) {
-          navigate("/products");
-        }
-      })
-      .catch(error => {
-        console.error(`Error: ${error}`);
-        setMessage(error);
+
+    try {
+      const response = await fetch('http://127.0.0.1:5000/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
       });
+
+      if (!response.ok) {
+        throw new Error('Failed to authenticate');
+      }
+
+      // Call login function provided by AuthContext to update authentication state
+      login();
+      setMessage('');
+      navigate('/products');
+    } catch (error) {
+      console.error(`Error: ${error.message}`);
+      setMessage('Failed to authenticate. Please check your credentials.');
+    }
   };
 
   return (
     <form onSubmit={handleLogin}>
-
       <div style={{ marginBottom: '10px' }}>
         <span style={{ color: 'red', display: 'block', fontSize: '14px' }}>{message}</span>
       </div>
-
       <div>
         <label htmlFor="username">Username:</label>
         <input
@@ -56,7 +51,6 @@ const LoginForm = ({ onSwitchToSignup}) => {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-
       <div>
         <label htmlFor="password">Password:</label>
         <input
@@ -67,11 +61,9 @@ const LoginForm = ({ onSwitchToSignup}) => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-
       <div>
         <button type="submit">Login</button>
       </div>
-
       <div>
         <button type="button" onClick={onSwitchToSignup}>Switch to Signup</button>
       </div>
