@@ -12,76 +12,76 @@ users = [
         'email': "example@gmail.com"
     }
         ]
-products = [ 
+movies = [ 
     { 
         "id": 1, 
-        "name": "Product 1", 
-        "description": "Description for Product 1", 
+        "name": "Movie 1", 
+        "description": "Description for Movie 1", 
         "price": 10.99, 
-        "image": 'images/product1.png' 
+        "image": 'images/movie1.png' 
     }, 
     { 
         "id": 2, 
-        "name": "Product 2", 
-        "description": "Description for Product 2", 
+        "name": "Movie 2", 
+        "description": "Description for Movie 2", 
         "price": 20.99, 
-        "image": 'images/product2.jpg' 
+        "image": 'images/movie2.jpg' 
     }, 
     { 
         "id": 3, 
-        "name": "Product 3", 
-        "description": "Description for Product 3", 
+        "name": "Movie 3", 
+        "description": "Description for Movie 3", 
         "price": 10.99, 
-        "image": 'images/product3.jpg' 
+        "image": 'images/movie3.jpg' 
     }, 
     { 
         "id": 4, 
-        "name": "Product 4", 
-        "description": "Description for Product 4", 
+        "name": "Movie 4", 
+        "description": "Description for Movie 4", 
         "price": 10.99, 
-        "image": 'images/product4.jpg' 
+        "image": 'images/movie4.jpg' 
     }, 
     { 
         "id": 5, 
-        "name": "Product 5", 
-        "description": "Description for Product 5", 
+        "name": "Movie 5", 
+        "description": "Description for Movie 5", 
         "price": 10.99, 
-        "image": 'images/product5.jpg' 
+        "image": 'images/movie5.jpg' 
     }, 
     { 
         "id": 6, 
-        "name": "Product 6", 
-        "description": "Description for Product 6", 
+        "name": "Movie 6", 
+        "description": "Description for Movie 6", 
         "price": 10.99, 
-        "image": 'images/product6.jpg' 
+        "image": 'images/movie6.jpg' 
     }, 
     { 
         "id": 7, 
-        "name": "Product 7", 
-        "description": "Description for Product 7", 
+        "name": "Movie 7", 
+        "description": "Description for Movie 7", 
         "price": 10.99, 
-        "image": 'images/product7.jpg' 
+        "image": 'images/movie7.jpg' 
     }, 
     { 
         "id": 8, 
-        "name": "Product 8", 
-        "description": "Description for Product 8", 
+        "name": "Movie 8", 
+        "description": "Description for Movie 8", 
         "price": 10.99, 
-        "image": 'images/product8.jpg' 
+        "image": 'images/movie8.jpg' 
     }, 
     { 
         "id": 9, 
-        "name": "Product 9", 
-        "description": "Description for Product 9", 
+        "name": "Movie 9", 
+        "description": "Description for Movie 9", 
         "price": 10.99, 
-        "image": 'images/product9.jpg' 
+        "image": 'images/movie9.jpg' 
     }, 
     { 
         "id": 10, 
-        "name": "Product 10", 
-        "description": "Description for Product 10", 
+        "name": "Movie 10", 
+        "description": "Description for Movie 10", 
         "price": 10.99, 
-        "image": 'images/product10.jpg' 
+        "image": 'images/movie10.jpg' 
     } 
 ] 
 # Helper functions
@@ -115,17 +115,17 @@ def add_user():
     else:
         return {'message': "Username already in use" }, 406 #not acceptable
 
-@app.route('/products', methods=['GET'])
-def get_all_products():
-    return jsonify(products)
+@app.route('/movies', methods=['GET'])
+def get_all_movies():
+    return jsonify(movies)
 
-@app.route('/products/<int:product_id>', methods=['GET'])
-def get_product_by_id(product_id):
-    product = next((p for p in products if p['id'] == product_id), None)
-    if product:
-        return jsonify(product)
+@app.route('/movies/<int:movie_id>', methods=['GET'])
+def get_movie_by_id(movie_id):
+    movie = next((p for p in movies if p['id'] == movie_id), None)
+    if movie:
+        return jsonify(movie)
     else:
-        return jsonify({'message': 'Product not found'}), 404
+        return jsonify({'message': 'Movie not found'}), 404
  
 #this is for testing purposes 
 @app.route('/users', methods=['GET'])

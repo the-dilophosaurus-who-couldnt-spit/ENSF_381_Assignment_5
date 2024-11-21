@@ -5,7 +5,7 @@ Flask, flask-cors
 
 setting up virtual machine: 
     1. Go to backend directory
-    2. Install venv: python -m venv venv
+    2. Install venv: python3 -m venv venv
 
     3. Start venv and install Libraries
     Note: If venv/bin/activate doesn't work then run: chmod +x venv/bin/activate, 
@@ -16,4 +16,4 @@ setting up virtual machine:
 
 starting API : 
     1. cd to backend directory
-    2. run: python app.py
+    2. run: python3 app.py

@@ -1,4 +1,6 @@
-#!/Users/alvinlong/Desktop/Winter2024/ensf381/ENSF_381_Assignment_5/backend/venv/bin/python
+#!/bin/sh
+'''exec' "/Users/alvinlong/Desktop/Fall_2024/ENSF_480/Final Project Demo/backend/venv/bin/python3.12" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys
