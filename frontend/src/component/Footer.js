@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="copyright">
-        &copy; {new Date().getFullYear()} One-Stop Car Shop. All Rights Reserved.
+        &copy; {new Date().getFullYear()} ACMEPlex. All Rights Reserved.
       </div>
     </footer>
   );

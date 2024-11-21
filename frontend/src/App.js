@@ -4,7 +4,7 @@ import React from 'react';
 import { AuthProvider } from './component/AuthContext'; // Import the Authentication context
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './component/HomePage';
-import ProductPage from './component/ProductPage';
+import MoviePage from './component/MoviePage';
 import LoginPage from './component/LoginPage';
 
 
@@ -15,7 +15,7 @@ const App = () => {
         <div>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/products" element={<ProductPage />} />
+            <Route path="/movies" element={<MoviePage />} />
             <Route path="/login" element={<LoginPage />} />
           </Routes>
         </div>

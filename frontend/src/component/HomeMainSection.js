@@ -21,10 +21,10 @@ const HomeMainSection = () => {
         <div>
             <h2>About Us</h2>
             {/* Company's mission and vision content */}
-            <p>At One-Stop Car Shop, we aim to provide customers the best possible experience shopping for any type of car, anytime!</p>
+            <p>At ACMEPlex, we aim to provide users the best possible online movie ticket booking experience!</p>
         
            
-            <Link to="/products">
+            <Link to="/movies">
                 <button>
                     Shop Now
                 </button>

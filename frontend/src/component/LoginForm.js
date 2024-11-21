@@ -29,7 +29,7 @@ const LoginForm = ({ onSwitchToSignup }) => {
       // Call login function provided by AuthContext to update authentication state
       login();
       setMessage('');
-      navigate('/products');
+      navigate('/movies');
     } catch (error) {
       console.error(`Error: ${error.message}`);
       setMessage('Failed to authenticate. Please check your credentials.');
