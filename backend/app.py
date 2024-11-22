@@ -18,72 +18,112 @@ movies = [
         "name": "Movie 1", 
         "description": "Description for Movie 1", 
         "price": 10.99, 
-        "image": 'images/movie1.png' 
-    }, 
+        "image": 'images/movie1.png',
+        "seatmap": [
+            {"row": "A", "seats": [{"number": 1, "available": True}, {"number": 2, "available": False}, {"number": 3, "available": True}]},
+            {"row": "B", "seats": [{"number": 1, "available": True}, {"number": 2, "available": True}, {"number": 3, "available": False}]},
+        ]
+    },
     { 
         "id": 2, 
         "name": "Movie 2", 
         "description": "Description for Movie 2", 
         "price": 20.99, 
-        "image": 'images/movie2.jpg' 
+        "image": 'images/movie2.jpg',
+        "seatmap": [
+            {"row": "A", "seats": [{"number": 1, "available": False}, {"number": 2, "available": True}, {"number": 3, "available": True}]},
+            {"row": "B", "seats": [{"number": 1, "available": True}, {"number": 2, "available": False}, {"number": 3, "available": True}]},
+        ]
     }, 
     { 
         "id": 3, 
         "name": "Movie 3", 
         "description": "Description for Movie 3", 
         "price": 10.99, 
-        "image": 'images/movie3.jpg' 
+        "image": 'images/movie3.jpg',
+        "seatmap": [
+            {"row": "A", "seats": [{"number": 1, "available": False}, {"number": 2, "available": True}, {"number": 3, "available": True}]},
+            {"row": "B", "seats": [{"number": 1, "available": True}, {"number": 2, "available": False}, {"number": 3, "available": True}]},
+        ]
     }, 
     { 
         "id": 4, 
         "name": "Movie 4", 
         "description": "Description for Movie 4", 
         "price": 10.99, 
-        "image": 'images/movie4.jpg' 
+        "image": 'images/movie4.jpg',
+        "seatmap": [
+            {"row": "A", "seats": [{"number": 1, "available": False}, {"number": 2, "available": True}, {"number": 3, "available": True}]},
+            {"row": "B", "seats": [{"number": 1, "available": True}, {"number": 2, "available": False}, {"number": 3, "available": True}]},
+        ]
     }, 
     { 
         "id": 5, 
         "name": "Movie 5", 
         "description": "Description for Movie 5", 
         "price": 10.99, 
-        "image": 'images/movie5.jpg' 
+        "image": 'images/movie5.jpg',
+        "seatmap": [
+            {"row": "A", "seats": [{"number": 1, "available": False}, {"number": 2, "available": True}, {"number": 3, "available": True}]},
+            {"row": "B", "seats": [{"number": 1, "available": True}, {"number": 2, "available": False}, {"number": 3, "available": True}]},
+        ]
     }, 
     { 
         "id": 6, 
         "name": "Movie 6", 
         "description": "Description for Movie 6", 
         "price": 10.99, 
-        "image": 'images/movie6.jpg' 
+        "image": 'images/movie6.jpg',
+        "seatmap": [
+            {"row": "A", "seats": [{"number": 1, "available": False}, {"number": 2, "available": True}, {"number": 3, "available": True}]},
+            {"row": "B", "seats": [{"number": 1, "available": True}, {"number": 2, "available": False}, {"number": 3, "available": True}]},
+        ]
     }, 
     { 
         "id": 7, 
         "name": "Movie 7", 
         "description": "Description for Movie 7", 
         "price": 10.99, 
-        "image": 'images/movie7.jpg' 
+        "image": 'images/movie7.jpg',
+        "seatmap": [
+            {"row": "A", "seats": [{"number": 1, "available": False}, {"number": 2, "available": True}, {"number": 3, "available": True}]},
+            {"row": "B", "seats": [{"number": 1, "available": True}, {"number": 2, "available": False}, {"number": 3, "available": True}]},
+        ]
     }, 
     { 
         "id": 8, 
         "name": "Movie 8", 
         "description": "Description for Movie 8", 
         "price": 10.99, 
-        "image": 'images/movie8.jpg' 
+        "image": 'images/movie8.jpg',
+        "seatmap": [
+            {"row": "A", "seats": [{"number": 1, "available": False}, {"number": 2, "available": True}, {"number": 3, "available": True}]},
+            {"row": "B", "seats": [{"number": 1, "available": True}, {"number": 2, "available": False}, {"number": 3, "available": True}]},
+        ]
     }, 
     { 
         "id": 9, 
         "name": "Movie 9", 
         "description": "Description for Movie 9", 
         "price": 10.99, 
-        "image": 'images/movie9.jpg' 
+        "image": 'images/movie9.jpg',
+        "seatmap": [
+            {"row": "A", "seats": [{"number": 1, "available": False}, {"number": 2, "available": True}, {"number": 3, "available": True}]},
+            {"row": "B", "seats": [{"number": 1, "available": True}, {"number": 2, "available": False}, {"number": 3, "available": True}]},
+        ]
     }, 
     { 
         "id": 10, 
         "name": "Movie 10", 
         "description": "Description for Movie 10", 
         "price": 10.99, 
-        "image": 'images/movie10.jpg' 
+        "image": 'images/movie10.jpg',
+        "seatmap": [
+            {"row": "A", "seats": [{"number": 1, "available": False}, {"number": 2, "available": True}, {"number": 3, "available": True}]},
+            {"row": "B", "seats": [{"number": 1, "available": True}, {"number": 2, "available": False}, {"number": 3, "available": True}]},
+        ]
     } 
-] 
+]
 # Helper functions
 def does_username_exist(userlist, username):
     for user in userlist:
@@ -126,7 +166,16 @@ def get_movie_by_id(movie_id):
         return jsonify(movie)
     else:
         return jsonify({'message': 'Movie not found'}), 404
- 
+    
+@app.route('/movies/<int:movie_id>/seatmap', methods=['GET'])
+def get_seatmap_for_movie(movie_id):
+    movie = next((m for m in movies if m['id'] == movie_id), None)
+    if not movie:
+        return jsonify({'message': 'Movie not found or invalid ID'}), 404
+    if 'seatmap' not in movie:
+        return jsonify({'message': 'Seatmap not found'}), 404
+    return jsonify({'rows': movie['seatmap']})
+
 #this is for testing purposes 
 @app.route('/users', methods=['GET'])
 def get_users():

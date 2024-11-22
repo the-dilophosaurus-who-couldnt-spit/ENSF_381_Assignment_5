@@ -30,6 +30,11 @@ const MoviePage = () => {
   }, [cartItems]);
 
   const addToCart = (movie) => {
+    navigate(`/movies/${movie.id}/seatmap`);
+  };
+  
+/*
+  const addToCart = (movie) => {
     const existingItemIndex = cartItems.findIndex(item => item.id === movie.id);
     if (existingItemIndex !== -1) {
       const updatedCartItems = [...cartItems];
@@ -39,7 +44,7 @@ const MoviePage = () => {
       setCartItems([...cartItems, { ...movie, quantity: 1 }]);
     }
   };
-
+*/
   const removeFromCart = (item) => {
     const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.id);
   
